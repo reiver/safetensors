@@ -41,17 +41,170 @@
 		The <strong>safetensors file format</strong> is a performant file format for <strong>machine learning</strong> (<abbr title="machine learning">ML</abbr>) and <strong>artificial intelligence</strong> (<abbr title="artificial intelligence">AI</abbr>) models.
 	</p>
 	<p>
-		The typicaly file-extension for the <strong>safetensors file format</strong> is:
-	</p>
-	<figure>
-		<p>
-			<code>.safetensors</code>
-		</p>
-	</figure>
-	<p>
 		A big part of the performance of the format is because its contents are meant to be <strong>memory mapped</strong> (<code>mmap</code>) (rather than parsed or copied).
 		Although, this tends to only work on computers with little-endian numbers.
 	</p>
+	<section>
+		<h1>File Extension</h1>
+		<p>
+			The typicaly file-extension for the <strong>safetensors file format</strong> is:
+		</p>
+		<figure>
+			<p>
+				<code>.safetensors</code>
+			</p>
+		</figure>
+	</section>
+	<section>
+		<h1>DType</h1>
+		<p>
+			A <strong>safetensors file</strong> can contain multiple tensors.
+			Each tensor has an <strong>element type</strong>.
+			These are (currently) the following defined <strong>element types</strong>, called <code>dtype</code> in the <strong>safetensors file format</strong> header:
+		</p>
+		<table>
+			<thead>
+				<tr>
+					<th>dtype</th>
+					<th>description</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>BOOL</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F4</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F6_E2M3</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F6_E3M2</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F8_E4M3</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F8_E5M2</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F8_E8M0</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F8_E4M3FNUZ</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>F8_E5M2FNUZ</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code>I8</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code>I16</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>U8</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code>U16</code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr>
+					<td><code></code></td>
+					<td>
+						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
 	<footer>
 		<include src="author.html"></include>
 		<include src="license.html"></include>
