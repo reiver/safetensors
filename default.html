@@ -38,10 +38,18 @@
 		</p>
 	</header>
 	<p>
-		The <strong>safetensors file format</strong> is a performant file format for <strong>machine learning</strong> (<abbr title="machine learning">ML</abbr>) and <strong>artificial intelligence</strong> (<abbr title="artificial intelligence">AI</abbr>) models
+		The <strong>safetensors file format</strong> is a performant file format for <strong>machine learning</strong> (<abbr title="machine learning">ML</abbr>) and <strong>artificial intelligence</strong> (<abbr title="artificial intelligence">AI</abbr>) models.
 	</p>
 	<p>
-		A bit part of the performance of the format is because its contents are meant to be <strong>memory mapped</strong> (<code>mmap</code>) (rather than parsed or copied).
+		The typicaly file-extension for the <strong>safetensors file format</strong> is:
+	</p>
+	<figure>
+		<p>
+			<code>.safetensors</code>
+		</p>
+	</figure>
+	<p>
+		A big part of the performance of the format is because its contents are meant to be <strong>memory mapped</strong> (<code>mmap</code>) (rather than parsed or copied).
 		Although, this tends to only work on computers with little-endian numbers.
 	</p>
 	<footer>
