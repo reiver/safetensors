@@ -64,6 +64,55 @@
 		</figure>
 	</section>
 	<section>
+		<h1>File Layout</h1>
+		<p>
+			The <strong>safetensors file format</strong> does <strong>not</strong> have <em>magic bytes</em> that let you identify it as a <strong>safetensors file</strong>.
+		</p>
+		<p>
+			The <strong>safetensors file format</strong> has 2 sections:
+		</p>
+		<ol>
+			<li>header</li>
+			<li>body</li>
+		<ol>
+		<figure>
+			<pre>
++--------+
+| header |
++--------+
+|  body  |
++--------+
+			</pre>
+		</figure>
+		<p>
+			The header is a <strong>64-bit <a href="/p-string/">p-string</a></strong>.
+		</p>
+		<figure>
+			<pre>
++----------------------+
+| header length prefix |
++----------------------+
+|     header bytes     |
+|          .           |
+|          .           |
+|          .           |
++----------------------+
+|         body         |
++----------------------+
+			</pre>
+		</figure>
+		<p>
+			I.e., the first 8 bytes of the <strong>safetensors file format</strong> <em>header</em> is a <strong>little-endian 64-bit unsigned integer</strong>.
+			(On a machine with little-endian hardware in the <em>Go programming language</em> (<abbr title="Go programming language">golang</abbr>) this is the <code>uint64</code> type — but only on a computer with little-endian hardware.)
+		</p>
+		<p>
+			The value of this <strong>little-endian 64-bit unsigned integer</strong> is the length of the <em>header bytes</em> (measure in bytes).
+		</p>
+		<p>
+			The <em>header bytes</em> is JSON.
+		</p>
+	</section>
+	<section>
 		<h1>DType</h1>
 		<p>
 			A <strong>safetensors file</strong> can contain multiple tensors.
