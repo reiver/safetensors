@@ -42,7 +42,12 @@
 	</p>
 	<p>
 		A big part of the performance of the format is because its contents are meant to be <strong>memory mapped</strong> (<code>mmap</code>) (rather than parsed or copied).
-		Although, this tends to only work on computers with little-endian numbers.
+	</p>
+	<p>
+		⚠️
+		But, there is big caveat with the <strong>safetensors file format</strong>.
+		It is only a performant on computers with little-endian hardware.
+		This is because all the numbers in th <strong>safetensors file format</strong> are stored in little-endian order.
 	</p>
 	<section>
 		<h1>File Extension</h1>
@@ -89,20 +94,21 @@
 		</p>
 		<figure>
 			<pre>
-+----------------------+
-| header length prefix |
-+----------------------+
-|     header bytes     |
-|          .           |
-|          .           |
-|          .           |
-+----------------------+
++----------------------+ -
+| header length prefix |  \
++----------------------+   \
+|     header bytes     |    \
+|          .           |     |- header
+|          .           |    /
+|          .           |   /
+|          .           |  /
++----------------------+ -
 |         body         |
 +----------------------+
 			</pre>
 		</figure>
 		<p>
-			I.e., the first 8 bytes of the <strong>safetensors file format</strong> <em>header</em> is a <strong>little-endian 64-bit unsigned integer</strong>.
+			I.e., the first 8 bytes (i.e, the first 64-bits) of the <strong>safetensors file format</strong> <em>header</em> is a <strong>little-endian 64-bit unsigned integer</strong>.
 			(On a machine with little-endian hardware in the <em>Go programming language</em> (<abbr title="Go programming language">golang</abbr>) this is the <code>uint64</code> type — but only on a computer with little-endian hardware.)
 		</p>
 		<p>
@@ -111,6 +117,78 @@
 		<p>
 			The <em>header bytes</em> is JSON.
 		</p>
+	</section>
+	<section>
+		<h1>Example Header</h1>
+		<p>
+			The <strong>header</strong> of the <strong>safetensors file format</strong> is a 64-bit <a href="/p-string/">p-string</a>.
+			And thus has 2 parts: the <strong>header length prefix</strong>, and the <strong>header bytes</strong>.
+		</p>
+		<p>
+			The first 8 byts of a <strong>safetensors file</strong> is the <strong>header length prefix</strong>.
+			We interpret it as a 64-bit unsigned integer.
+		</p>
+		<p>
+			For our example, let's say the first 8 bytes are:
+		</p>
+		<figure>
++------+------+------+------+------+------+------+------+
+| 0xD4 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 |
++------+------+------+------+------+------+------+------+
+		</figure>
+		<p>
+			Or, in decimal (rather than hexadecimal) this would be:
+		</p>
+		<figure>
++------+------+------+------+------+------+------+------+
+|  212 |   0  |   0  |   0  |   0  |   0  |   0  |   0  |
++------+------+------+------+------+------+------+------+
+		</figure>
+		<p>
+			Which means that the value of the <strong>header length prefix</strong> is:
+		</p>
+		<figure>
+= (212 × 16<sup>0</sup>) + (0 ×  16<sup>1</sup>) + (0 ×  16<sup>2</sup>) + (0 ×  16<sup>3</sup>) + (0 ×  16<sup>4</sup>) + (0 ×  16<sup>5</sup>) + (0 ×  16<sup>6</sup>) + (0 ×  16<sup>7</sup>)
+<br />
+<br />
+= 212 + 0 + 0 + 0  + 0 + 0 + 0 + 0
+<br />
+<br />
+= 212
+		</figure>
+		<p>
+			<strong>This number tells us how many bytes is the rest of the header — i.e., how many bytes in the <em>header bytes</em>.</strong>
+		</p>
+		<p>
+			Continuing our examples, now let's say the 212 bytes of our <em>header bytes</em> os:
+		</p>
+		<figure>
+			<pre>
+{"__metadata__":{"format":"pt"},"model.embed_tokens.weight":{"dtype":"F16","shape":[32000,768],"data_offsets":[0,49152000]},"lm_head.weight":{"dtype":"F16","shape":[32000,768],"data_offsets":[49152000,98304000]}}
+			</pre>
+		</figure>
+		<p>
+			If we <em>pretty print</em> that, we get:
+		</p>
+		<figure>
+			<pre>
+{
+  "__metadata__": {
+    "format": "pt"
+  },
+  "model.embed_tokens.weight": {
+    "dtype": "F16",
+    "shape": [32000, 768],
+    "data_offsets": [0, 49152000]
+  },
+  "lm_head.weight": {
+    "dtype": "F16",
+    "shape": [32000, 768],
+    "data_offsets": [49152000, 98304000]
+  }
+}
+			</pre>
+		</figure>
 	</section>
 	<section>
 		<h1>DType</h1>
