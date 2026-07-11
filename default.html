@@ -412,24 +412,38 @@
 			We interpret it as a 64-bit unsigned integer.
 		</p>
 		<p>
-			For our example, let's say the first 8 bytes are:
+			For our example, the first 8 bytes are:
 		</p>
 		<figure>
-			<pre>
-+------+------+------+------+------+------+------+------+
-| 0xD4 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 | 0x00 |
-+------+------+------+------+------+------+------+------+
-			</pre>
+			<table>
+				<tr>
+					<td><code>0xD4</code></td>
+					<td><code>0x00</code></td>
+					<td><code>0x00</code></td>
+					<td><code>0x00</code></td>
+					<td><code>0x00</code></td>
+					<td><code>0x00</code></td>
+					<td><code>0x00</code></td>
+					<td><code>0x00</code></td>
+				</tr>
+			</table>
 		</figure>
 		<p>
 			Or, in decimal (rather than hexadecimal) this would be:
 		</p>
 		<figure>
-			<pre>
-+------+------+------+------+------+------+------+------+
-|  212 |   0  |   0  |   0  |   0  |   0  |   0  |   0  |
-+------+------+------+------+------+------+------+------+
-			</pre>
+			<table>
+				<tr>
+					<td><code>212</code></td>
+					<td><code>0</code></td>
+					<td><code>0</code></td>
+					<td><code>0</code></td>
+					<td><code>0</code></td>
+					<td><code>0</code></td>
+					<td><code>0</code></td>
+					<td><code>0</code></td>
+				</tr>
+			</table>
 		</figure>
 		<p>
 			Which means that the value of the <strong>header length prefix</strong> is:
