@@ -30,7 +30,7 @@
 		<hgroup>
 			<h1 property="headline">.safetensors file format</h1>
 			<p>
-				a performant file format for <abbr title="machine learning">ML</abbr> and <abbr title="artificial intelligence">AI</abbr> models
+				a performant file format for <abbr title="machine learning">ML</abbr> and <abbr title="artificial intelligence">AI</abbr> model weights
 			</p>
 		</hgroup>
 		<p>
@@ -38,7 +38,13 @@
 		</p>
 	</header>
 	<p>
-		The <strong>safetensors file format</strong> is a performant file format for <strong>machine learning</strong> (<abbr title="machine learning">ML</abbr>) and <strong>artificial intelligence</strong> (<abbr title="artificial intelligence">AI</abbr>) models.
+		The <strong>safetensors file format</strong> is a performant file format for <strong>machine learning</strong> (<abbr title="machine learning">ML</abbr>) and <strong>artificial intelligence</strong> (<abbr title="artificial intelligence">AI</abbr>) model weights.
+	</p>
+	<p>
+		ℹ️
+		Note that a <strong>safetensors file</strong> does <em>not</em> contain enough information to "connect" the tensor data, or "run" the model.
+		More information is needed for that.
+		But, the <strong>safetensors file format</strong> can be a good way to sharing tensor data.
 	</p>
 	<p>
 		A big part of the performance of the format is because its contents are meant to be <strong>memory mapped</strong> (<code>mmap</code>) (rather than parsed or copied).
