@@ -105,7 +105,7 @@
 +----------------------+ -
 | header length prefix |  \
 +----------------------+   \
-|     header bytes     |    \
+|    header content    |    \
 |          .           |     |- header
 |          .           |    /
 |          .           |   /
@@ -120,10 +120,10 @@
 			(On a machine with little-endian hardware, in the <em>Go programming language</em> (<abbr title="Go programming language">golang</abbr>) this is the <code>uint64</code> type — but only on a computer with little-endian hardware.)
 		</p>
 		<p>
-			The value of this <strong>little-endian 64-bit unsigned integer</strong> is the length of the <em>header bytes</em> (measure in bytes).
+			The value of this <strong>little-endian 64-bit unsigned integer</strong> is the length of the <em>header content</em> (measured in <em>number of bytes</em>).
 		</p>
 		<p>
-			The <em>header bytes</em> is JSON.
+			The <em>header content</em> is JSON.
 		</p>
 	</section>
 	<section>
@@ -415,13 +415,13 @@
 					The bytes of the <em>header</em> of an example <em>safetensors file</em>.
 					There are 220 bytes in this example <em>header</em>.
 					The first 8 bytes are the <em>header length prefix</em>.
-					The remaining 212 bytes are the <em>header bytes</em>.
+					The remaining 212 bytes are the <em>header content</em>.
 				</p>
 			</figcaption>
 		</figure>
 		<p>
 			The <strong>header</strong> of the <strong>safetensors file format</strong> is a 64-bit <a href="/p-string/">p-string</a>.
-			And thus has 2 parts: the <strong>header length prefix</strong>, and the <strong>header bytes</strong>.
+			And thus has 2 parts: the <strong>header length prefix</strong>, and the <strong>header content</strong>.
 		</p>
 		<p>
 			The first 8 byts of a <strong>safetensors file</strong> is the <strong>header length prefix</strong>.
@@ -474,10 +474,10 @@
 = 212
 		</figure>
 		<p>
-			<strong>This number tells us how many bytes is the rest of the header — i.e., how many bytes in the <em>header bytes</em>.</strong>
+			<strong>This number tells us how many bytes is the rest of the header — i.e., how many bytes in the <em>header content</em>.</strong>
 		</p>
 		<p>
-			Continuing our examples, the 212 bytes of our <em>header bytes</em> is:
+			Continuing our examples, the 212 bytes of our <em>header content</em> is:
 		</p>
 		<figure>
 			<pre>
