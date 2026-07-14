@@ -516,7 +516,11 @@
 		<p>
 			A <strong>safetensors file</strong> can contain multiple tensors.
 			Each tensor has an <strong>element type</strong>.
-			These are (currently) the following defined <strong>element types</strong>, called <code>dtype</code> in the <strong>safetensors file format</strong> header:
+			What the <strong>element type</strong> is of the tensor is specified in the <strong>safetensors file</strong>'s <strong>header</strong>.
+			And, in particular, by the <strong>dtype</strong>.
+		</p>
+		<p>
+			Currently (at the time of writing) the following are the valid <strong>element types</strong>, called <code>dtype</code> in the <strong>safetensors file format</strong> header:
 		</p>
 		<table>
 			<thead>
