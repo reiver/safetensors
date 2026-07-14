@@ -117,7 +117,7 @@
 		</figure>
 		<p>
 			I.e., the first 8 bytes (i.e, the first 64-bits) of the <strong>safetensors file format</strong> <em>header</em> is a <strong>little-endian 64-bit unsigned integer</strong>.
-			(On a machine with little-endian hardware in the <em>Go programming language</em> (<abbr title="Go programming language">golang</abbr>) this is the <code>uint64</code> type — but only on a computer with little-endian hardware.)
+			(On a machine with little-endian hardware, in the <em>Go programming language</em> (<abbr title="Go programming language">golang</abbr>) this is the <code>uint64</code> type — but only on a computer with little-endian hardware.)
 		</p>
 		<p>
 			The value of this <strong>little-endian 64-bit unsigned integer</strong> is the length of the <em>header bytes</em> (measure in bytes).
